@@ -24,7 +24,7 @@ public class UserLoginController extends BasicController {
 	public ApiModel dologin(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userName = (String) session.getAttribute("userName");
-		// to do update user login info
+		// to do update user login info aa
 		logger.info("sessiontimeout:" + request.getSession().getMaxInactiveInterval());
 		return new ApiModel();
 	}
