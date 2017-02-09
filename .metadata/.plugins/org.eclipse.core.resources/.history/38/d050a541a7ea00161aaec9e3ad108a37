@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理系统</title>
+<script type="text/javascript">
+	var StaticSetting = {};
+	StaticSetting.absUrl = "${request.getContextPath()}";
+	userId="${Session["userId"]}";
+</script>
+<LINK href="${request.getContextPath()}/images/favicon.ico" type="image/x-icon" rel=icon>
+<LINK href="${request.getContextPath()}/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/css/topTool.css" />
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/css/footTool.css" />
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/js/framework/resources/ext-theme-gray/ext-theme-gray-all.css"/>
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/js/framework/plugins/msgshow/messagebox.css"/>
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/css/icon.css">
+<script src="${request.getContextPath()}/js/framework/bootstrap.js"></script>
+<script src="${request.getContextPath()}/js/framework/locale/ext-lang-zh_CN.js"></script>
+<script src="${request.getContextPath()}/js/framework/plugins/msgshow/messagebox.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/js/app.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/js/framework/qsoft.PopBigImage.v0.35.js"></script>
+
+<script type="text/javascript" src="${request.getContextPath()}/js/index/lincase/script/locale/wb-lang-zh_CN.js"></script>
+<script type="text/javascript" src="http://cdnfile.op110.com.cn/controls/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="http://cdnfile.op110.com.cn/controls/layer/layer.js"></script> -->
+<script type="text/javascript" src="${request.getContextPath()}/js/index/lincase/script/wb.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/js/index/lincase/script/portal.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/js/index/web/js/echarts-all.min.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/js/index/web/js/freewall.min.js"></script>
+
+
+<script type="text/javascript">
+Ext.onReady(function(){
+	Wb.initialize(300000,480);
+	Pt.indexPath="";
+	Wd.desktopData=null;
+	Pt.initialize();
+})
+</script>
+
+</head>
+<body>
+	<div id="main_south">
+		<div
+			style="background: none repeat scroll 0 0 rgb(255, 255, 255); height: 100px">
+
+		</div>
+	</div>
+</body>
+</html>

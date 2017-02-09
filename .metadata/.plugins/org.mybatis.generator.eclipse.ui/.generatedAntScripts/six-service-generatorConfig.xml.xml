@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="generate">
+  <target name="generate">
+    <mybatis.generate configfile="/wangxh/workspace/code/base_six/six-parent/six-service/generatorConfig.xml" />
+  </target>
+</project>

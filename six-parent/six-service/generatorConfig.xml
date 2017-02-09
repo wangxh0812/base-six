@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration    
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry location="/wangxh/jar/mysql-connector-java-5.1.38.jar" />
+	<!-- 去除withClobs类 的设置defaultModelType = "flat" "hierarchical" "conditional" -->
+	<context id="context1" defaultModelType="flat">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+			<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://121.43.56.42:3306/picc" userId="picc"
+			password="picc" />
+
+		<!-- <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@10.139.51.119:1521:dooyaa" 
+			userId="doyab" password="doyab123" /> -->
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:自动生成代码的位置 -->
+		<javaModelGenerator targetPackage="com.six.common.model.basic"
+			targetProject="six-common">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+			<property name="rootClass" value="com.six.core.abstractclass.BasicModel"/>
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.six.mapper"
+			targetProject="six-service">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- <javaClientGenerator targetPackage="com.mango.fortune.user.service" 
+			targetProject="fortune" type="XMLMAPPER"> <property name="enableSubPackages" 
+			value="false" /> </javaClientGenerator> -->
+		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+		<table tableName="m_user" domainObjectName="AdminUser"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table>
+	</context>
+</generatorConfiguration>

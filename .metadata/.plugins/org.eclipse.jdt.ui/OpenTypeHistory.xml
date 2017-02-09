@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=six-framework/\/wangxh\/Repository\/jar\/.m2\/repo\/com\/google\/code\/kaptcha\/kaptcha\/2.3.2\/kaptcha-2.3.2.jar&lt;com.google.code.kaptcha.servlet(KaptchaServlet.class[KaptchaServlet" modifiers="33" timestamp="1475998329000"/>
+<typeInfo handle="=six-framework/src\/main\/java&lt;com.six.framework.basic.service{UserService.java[UserService" modifiers="513" timestamp="1485135298000"/>
+<typeInfo handle="=six-framework/\/wangxh\/Repository\/jar\/.m2\/repo\/org\/springframework\/spring-webmvc\/4.3.3.RELEASE\/spring-webmvc-4.3.3.RELEASE.jar&lt;org.springframework.web.servlet.mvc.method.annotation(RequestMappingHandlerMapping.class[RequestMappingHandlerMapping" modifiers="33" timestamp="1475112937000"/>
+<typeInfo handle="=six-framework/\/wangxh\/Repository\/jar\/.m2\/repo\/org\/springframework\/spring-webmvc\/4.3.3.RELEASE\/spring-webmvc-4.3.3.RELEASE.jar&lt;org.springframework.web.servlet.view(InternalResourceView.class[InternalResourceView" modifiers="33" timestamp="1475112937000"/>
+<typeInfo handle="=six-framework/\/wangxh\/Repository\/jar\/.m2\/repo\/org\/springframework\/spring-webmvc\/4.3.3.RELEASE\/spring-webmvc-4.3.3.RELEASE.jar&lt;org.springframework.web.servlet.handler(SimpleUrlHandlerMapping.class[SimpleUrlHandlerMapping" modifiers="33" timestamp="1475112937000"/>
+</typeInfoHistroy>

@@ -1,0 +1,142 @@
+package com.six.core.orm.mybatis;
+
+import com.six.core.exception.DataBaseAccessException;
+import com.six.core.orm.BaseDbOpDao;
+import com.six.core.orm.page.Page;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.util.List;
+import java.util.Map;
+import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyBatisDaoImpl<T> extends SqlSessionDaoSupport implements BaseDbOpDao<T> {
+	private static final String COUNT = "_Count";
+
+	public int save(String key, T entity) throws DataBaseAccessException {
+		try {
+			return getSqlSession().insert(key, entity);
+		} catch (Exception e) {
+			throw new DataBaseAccessException(getClass().getName() + " save exception: ", e);
+		}
+	}
+
+	public int save(String key, List<T> entity) throws DataBaseAccessException {
+		try {
+			return getSqlSession().insert(key, entity);
+		} catch (Exception e) {
+			throw new DataBaseAccessException(getClass().getName() + " save exception: ", e);
+		}
+	}
+
+	public int update(String key, T entity) throws DataBaseAccessException {
+		try {
+			return getSqlSession().update(key, entity);
+		} catch (Exception e) {
+			throw new DataBaseAccessException(getClass().getName() + " update exception: ", e);
+		}
+	}
+
+	public int update(String key, Map<Object, T> entity) throws DataBaseAccessException {
+		try {
+			return getSqlSession().update(key, entity);
+		} catch (Exception e) {
+			throw new DataBaseAccessException(getClass().getName() + " update exception: ", e);
+		}
+	}
+
+	public int delete(String key, Serializable id) throws DataBaseAccessException {
+		try {
+			return getSqlSession().delete(key, id);
+		} catch (Exception e) {
+			throw new DataBaseAccessException(getClass().getName() + " delete exception: ", e);
+		}
+	}
+
+	public int delete(String key, T entity) throws DataBaseAccessException {
+		try {
+			return getSqlSession().delete(key, entity);
+		} catch (Exception e) {
+			throw new DataBaseAccessException(getClass().getName() + " delete exception: ", e);
+		}
+	}
+
+	public List<T> getAll(String key) {
+		try {
+			return getSqlSession().selectList(key);
+		} catch (Exception e) {
+			this.logger.error(getClass().getName() + " getAll exception and key is: " + key, e);
+		}
+		return null;
+	}
+
+	public T get(String key, Object params) {
+		try {
+			return getSqlSession().selectOne(key, params);
+		} catch (Exception e) {
+			this.logger.error(getClass().getName() + " get exception and key is: " + key, e);
+		}
+		return null;
+	}
+
+	public List<T> getList(String key, Object params) {
+		try {
+			return getSqlSession().selectList(key, params);
+		} catch (Exception e) {
+			this.logger.error(getClass().getName() + " getList exception and key is: " + key, e);
+		}
+		return null;
+	}
+
+	public Page<T> getList(String key, Object params, Page<T> page) {
+		try {
+			Integer totalCounts = count(key + COUNT, params);
+
+			int pageM = maxPage(totalCounts, Integer.valueOf(page.getPageSize()), Integer.valueOf(page.getPageNo()));
+			if (pageM > 0) {
+				page.setPageNo(pageM);
+			}
+			if ((totalCounts != null) && (totalCounts.longValue() > 0L)) {
+				List<T> list = getSqlSession().selectList(key, params,
+						new RowBounds(page.getOffset(), page.getPageSize()));
+				page.setResult(list);
+				page.setTotalCount(totalCounts.longValue());
+			}
+			return page;
+		} catch (Exception e) {
+			this.logger.error(getClass().getName() + " getList exception and key is: " + key, e);
+		}
+		return null;
+	}
+
+	private int maxPage(Integer tcount, Integer pageS, Integer pNo) {
+		int maxPage = tcount.intValue() % pageS.intValue() == 0 ? tcount.intValue() / pageS.intValue()
+				: tcount.intValue() / pageS.intValue() + 1;
+		if (maxPage < pNo.intValue()) {
+			return maxPage;
+		}
+		return -1;
+	}
+
+	public Integer count(String key, Object params) {
+		try {
+			return (Integer) getSqlSession().selectOne(key, params);
+		} catch (Exception e) {
+			this.logger.error(getClass().getName() + " count exception and key is: " + key, e);
+		}
+		return Integer.valueOf(0);
+	}
+
+	public Connection getConnection() {
+		return getSqlSession().getConnection();
+	}
+
+	@Autowired
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
+}

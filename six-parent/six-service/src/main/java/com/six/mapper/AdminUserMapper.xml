@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.six.common.model.basic.AdminUserMapper">
+	<resultMap id="BaseResultMap" type="com.six.common.model.basic.AdminUser">
+		<id column="user_id" jdbcType="CHAR" property="userId" />
+		<result column="ID" jdbcType="BIGINT" property="id" />
+		<result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+		<result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+		<result column="TEL" jdbcType="VARCHAR" property="tel" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="STATUS" jdbcType="CHAR" property="status" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="COMPANY_ID" jdbcType="CHAR" property="companyId" />
+		<result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName" />
+		<result column="DEPART_ID" jdbcType="CHAR" property="departId" />
+		<result column="DEPART_NAME" jdbcType="VARCHAR" property="departName" />
+		<result column="LAST_LOGIN_IP" jdbcType="VARCHAR" property="lastLoginIp" />
+		<result column="LAST_LOGIN_TIME" jdbcType="TIMESTAMP" property="lastLoginTime" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, ID, ACCOUNT, PASSWORD, REAL_NAME, TEL, EMAIL, STATUS, UPDATE_TIME,
+		COMPANY_ID,
+		COMPANY_NAME, DEPART_ID, DEPART_NAME, LAST_LOGIN_IP, LAST_LOGIN_TIME, CREATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from m_user
+		where user_id = #{userId,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from m_user
+		where user_id = #{userId,jdbcType=CHAR}
+	</delete>
+
+	<select id="getUserByAccount" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from m_user
+		where account = #{userId,jdbcType=CHAR}
+	</select>
+
+	<insert id="insert" parameterType="com.six.common.model.basic.AdminUser">
+		insert into m_user (user_id, ID, ACCOUNT,
+		PASSWORD, REAL_NAME, TEL,
+		EMAIL, STATUS, UPDATE_TIME,
+		COMPANY_ID, COMPANY_NAME, DEPART_ID,
+		DEPART_NAME, LAST_LOGIN_IP, LAST_LOGIN_TIME,
+		CREATE_TIME)
+		values (#{userId,jdbcType=CHAR}, #{id,jdbcType=BIGINT},
+		#{account,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{companyId,jdbcType=CHAR}, #{companyName,jdbcType=VARCHAR}, #{departId,jdbcType=CHAR},
+		#{departName,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR},
+		#{lastLoginTime,jdbcType=TIMESTAMP},
+		#{createTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.six.common.model.basic.AdminUser">
+		insert into m_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="account != null">
+				ACCOUNT,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+			<if test="realName != null">
+				REAL_NAME,
+			</if>
+			<if test="tel != null">
+				TEL,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME,
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID,
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME,
+			</if>
+			<if test="departId != null">
+				DEPART_ID,
+			</if>
+			<if test="departName != null">
+				DEPART_NAME,
+			</if>
+			<if test="lastLoginIp != null">
+				LAST_LOGIN_IP,
+			</if>
+			<if test="lastLoginTime != null">
+				LAST_LOGIN_TIME,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=CHAR},
+			</if>
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="account != null">
+				#{account,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				#{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=CHAR},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=CHAR},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="departId != null">
+				#{departId,jdbcType=CHAR},
+			</if>
+			<if test="departName != null">
+				#{departName,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginIp != null">
+				#{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginTime != null">
+				#{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.six.common.model.basic.AdminUser">
+		update m_user
+		<set>
+			<if test="id != null">
+				ID = #{id,jdbcType=BIGINT},
+			</if>
+			<if test="account != null">
+				ACCOUNT = #{account,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				REAL_NAME = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				TEL = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=CHAR},
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=CHAR},
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="departId != null">
+				DEPART_ID = #{departId,jdbcType=CHAR},
+			</if>
+			<if test="departName != null">
+				DEPART_NAME = #{departName,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginIp != null">
+				LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginTime != null">
+				LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.six.common.model.basic.AdminUser">
+		update m_user
+		set ID = #{id,jdbcType=BIGINT},
+		ACCOUNT = #{account,jdbcType=VARCHAR},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		REAL_NAME = #{realName,jdbcType=VARCHAR},
+		TEL = #{tel,jdbcType=VARCHAR},
+		EMAIL = #{email,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=CHAR},
+		UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+		COMPANY_ID = #{companyId,jdbcType=CHAR},
+		COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+		DEPART_ID = #{departId,jdbcType=CHAR},
+		DEPART_NAME = #{departName,jdbcType=VARCHAR},
+		LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+		LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		where user_id = #{userId,jdbcType=CHAR}
+	</update>
+	<select id="getList" parameterType="com.six.common.model.basic.AdminUser" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from m_user
+		<where>
+			<if test="account != null and account !=''">
+				AND ACCOUNT = #{account,jdbcType=VARCHAR}
+			</if>
+			<if test="realName != null and realName !=''">
+				AND REAL_NAME = #{realName,jdbcType=VARCHAR}
+			</if>
+			<if test="tel != null and tel !=''">
+				AND TEL = #{tel,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email !=''">
+				AND EMAIL = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null and companyId !=''">
+				AND COMPANY_ID = #{companyId,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getList_Count" parameterType="com.six.common.model.basic.AdminUser" resultType="java.lang.Integer">
+		select count(0) from m_user
+		<where>
+			<if test="account != null and account !=''">
+				AND ACCOUNT = #{account,jdbcType=VARCHAR}
+			</if>
+			<if test="realName != null and realName !=''">
+				AND REAL_NAME = #{realName,jdbcType=VARCHAR}
+			</if>
+			<if test="tel != null and tel !=''">
+				AND TEL = #{tel,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email !=''">
+				AND EMAIL = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null and companyId !=''">
+				AND COMPANY_ID = #{companyId,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+</mapper>

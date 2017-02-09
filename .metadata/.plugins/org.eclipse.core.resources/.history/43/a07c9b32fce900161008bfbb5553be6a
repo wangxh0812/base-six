@@ -1,0 +1,43 @@
+spring:
+  profiles.active: development
+  application:
+        name: six-mis
+---        
+spring:
+  profiles: development
+server:
+    port: 8080
+    session: 
+      timeout: 1800
+
+kaptcha:
+  session:
+    key: KAPTCHA_SESSION_KEY
+  #border: no  
+  #渲染效果：水纹：WaterRipple；鱼眼：FishEyeGimpy；阴影：ShadowGimpy  
+  obscurificator:  
+    impl: com.google.code.kaptcha.impl.ShadowGimpy
+  #不要噪点  
+  noise:
+    #impl: com.google.code.kaptcha.impl.NoNoise
+    impl: com.google.code.kaptcha.impl.DefaultNoise
+  image:
+    width: 90
+    height: 33  
+  textproducer:
+    font:
+      size: 25
+      color: black  
+    char:
+      length: 4  
+      space: 5  
+  #和登录框背景颜色一致  
+  background:  
+    clear:  
+      from: 247,247,247  
+      to: 247,247,247
+freemarker:
+    freemarkerviewresolver:
+       suffix : .html
+    freemarkerconfigurer:
+       templateloaderpaths: /page/

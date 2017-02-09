@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.mybatis.generator.eclipse.launching.LaunchConfigurationType">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/six-service"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.mybatis.generator.eclipse.ui.CONFIG_TAB.FILE_NAME" value="${workspace_loc:/six-service/generatorConfig.xml}"/>
+</launchConfiguration>

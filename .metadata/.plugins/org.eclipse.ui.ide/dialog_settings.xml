@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="563" key="DIALOG_WIDTH"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="384" key="DIALOG_HEIGHT"/>
+		<item value="711" key="DIALOG_X_ORIGIN"/>
+		<item value="310" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.m2e.core.wizards.Maven2ModuleWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="false" key="FilterByLocation"/>
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/six-web/src/main/resources/application.yml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-framework/src/main/java/com/six/framework/controller/BasicController.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-core/src/main/java/com/six/core/abstractclass/BasicModel.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-framework/src/main/java/com/six/framework/basic/dao/impl/AdminUserDaoImpl.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-service/src/main/resources/mybatis-config.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-framework/src/main/java/com/six/framework/config/MyBatisConfig.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-core/src/main/java/com/six/core/orm/mybatis/MyBatisDaoImpl.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-parent/six-service/src/main/java/com/six/mapper/AdminUserMapper.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-framework/src/main/java/com/six/framework/basic/service/impl/AdminUserServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-core/src/main/java/com/six/core/orm/BaseService.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-core/src/main/java/com/six/core/orm/impl/BaseDaoImpl.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-core/src/main/java/com/six/core/logger/SimpleLogger.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-framework/src/main/java/com/six/framework/security/KaptchaAuthenticationFilter.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/six-core/src/main/java/com/six/core/utils/MD5.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="false" key="ShowDerived"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="302" key="DIALOG_X_ORIGIN"/>
+			<item value="253" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

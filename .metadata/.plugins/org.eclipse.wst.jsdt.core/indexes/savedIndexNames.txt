@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+/wangxh/workspace/code/base_six/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3330082329.index
+1478652033.index
+844821516.index
+298405697.index
+1796593409.index
+2451099342.index
+4241658438.index

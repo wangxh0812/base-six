@@ -1,0 +1,13 @@
+<!-- Logback configuration. See http://logback.qos.ch/manual/index.html -->
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<logger name="org.springframework.web" level="DEBUG" />
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>.%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+</configuration>

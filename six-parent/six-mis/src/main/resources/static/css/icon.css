@@ -1,0 +1,57 @@
+.icon-home {
+	background: url('../images/icons/house.png') no-repeat center center;
+}
+.icon-apphome {
+	background: url('../images/icons/application_home.png') no-repeat center center;
+}
+.icon-applist {
+	background: url('../images/icons/application_list.png') no-repeat center center;
+}
+.icon-add {
+	background: url('../images/icons/page_add.png') no-repeat center center;
+}
+.icon-edit {
+	background: url('../images/icons/page_edit.png') no-repeat center center;
+}
+.icon-remove {
+	background: url('../images/icons/page_delete.png') no-repeat center center;
+}
+.icon-save {
+	background: url('../images/icons/page_save.png') no-repeat center center;
+}
+.icon-search {
+	background: url('../images/icons/page_find.png') no-repeat center center;
+}
+.icon-help {
+	background: url('../images/icons/help.png') no-repeat center center;
+}
+.icon-out {
+	background: url('../images/icons/page_out.png') no-repeat center center;
+}
+.icon-excel {
+	background: url('../images/icons/page_excel.png') no-repeat center center;
+}
+.icon-word {
+	background: url('../images/icons/page_word.png') no-repeat center center;
+}
+.icon-refresh {
+	background: url('../images/icons/page_refresh.png') no-repeat center center;
+}
+.icon-reload {
+	background: url('../images/icons/reload.png') no-repeat center center;
+}
+.icon-accept {
+	background: url('../images/icons/accept.png') no-repeat center center;
+}
+.icon-cancel {
+	background: url('../images/icons/cancel.png') no-repeat center center;
+}
+.icon-user {
+	background: url('../images/icons/user.png') no-repeat center center;
+}
+.icon-user-female {
+	background: url('../images/icons/user_female.png') no-repeat center center;
+}
+.icon-baojing {
+	background: url('../images/icons/baojing.gif') no-repeat center center;
+}

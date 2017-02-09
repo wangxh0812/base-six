@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <label name="company">
+    <item name="model">com.g3.ehr.organization.model.HrCompanyData</item>
+    <item name="service">hrCompanyDataService</item>
+  </label>
+  <label name="depart">
+    <item name="model">com.g3.ehr.organization.model.HrDepartData</item>
+    <item name="service">hrDepartDataService</item>
+  </label> 
+</root>

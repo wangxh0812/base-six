@@ -1,0 +1,213 @@
+package com.six.core.orm.page;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.collections.IteratorUtils;
+import org.apache.commons.lang3.StringUtils;
+
+public class Page<T> implements Serializable {
+	private static final long serialVersionUID = 3166562173078024440L;
+	public static final String ASC = "asc";
+	public static final String DESC = "desc";
+	protected int pageNo = 1;
+	protected int pageSize = 10;
+	protected String orderBy = null;
+	protected String order = null;
+	protected List<T> result = Collections.emptyList();
+	protected long totalCount = 0L;
+
+	public Page() {
+	}
+
+	public Page(int pageSize) {
+		setPageSize(pageSize);
+	}
+
+	public Page(int pageNo, int pageSize) {
+		setPageNo(pageNo);
+		setPageSize(pageSize);
+	}
+
+	public int getPageNo() {
+		return this.pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+		if (pageNo < 1)
+			this.pageNo = 1;
+	}
+
+	public int getPageSize() {
+		return this.pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+		if (pageSize < 1)
+			this.pageSize = 1;
+	}
+
+	public int getFirst() {
+		return (this.pageNo - 1) * this.pageSize + 1;
+	}
+
+	public String getOrderBy() {
+		return this.orderBy;
+	}
+
+	public void setOrderBy(String orderBy) {
+		this.orderBy = orderBy;
+	}
+
+	public Page<T> orderBy(String theOrderBy) {
+		setOrderBy(theOrderBy);
+		return this;
+	}
+
+	public String getOrder() {
+		return this.order;
+	}
+
+	public void setOrder(String order) {
+		String lowcaseOrder = StringUtils.lowerCase(order);
+
+		String[] orders = StringUtils.split(lowcaseOrder, ',');
+		for (String orderStr : orders) {
+			if ((!StringUtils.equals("desc", orderStr)) && (!StringUtils.equals("asc", orderStr))) {
+				throw new IllegalArgumentException("排序方向" + orderStr + "不是合法值");
+			}
+		}
+		this.order = lowcaseOrder;
+	}
+
+	public Page<T> order(String theOrder) {
+		setOrder(theOrder);
+		return this;
+	}
+
+	public boolean isOrderBySetted() {
+		return (StringUtils.isNotBlank(this.orderBy)) && (StringUtils.isNotBlank(this.order));
+	}
+
+	public int getOffset() {
+		return (this.pageNo - 1) * this.pageSize;
+	}
+
+	public Iterator<T> iterator() {
+		return this.result == null ? IteratorUtils.EMPTY_ITERATOR : this.result.iterator();
+	}
+
+	public List<T> getResult() {
+		return this.result;
+	}
+
+	public void setResult(List<T> result) {
+		this.result = result;
+	}
+
+	public long getTotalCount() {
+		return this.totalCount;
+	}
+
+	public void setTotalCount(long totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public boolean getFirstPage() {
+		return this.pageNo == 1;
+	}
+
+	public boolean getHasPrePage() {
+		return this.pageNo - 1 >= 1;
+	}
+
+	public boolean getHasNextPage() {
+		return this.pageNo + 1 <= getTotalPages();
+	}
+
+	public boolean getLastPage() {
+		return this.pageNo == getTotalPages();
+	}
+
+	public int getNextPage() {
+		if (getHasNextPage()) {
+			return this.pageNo + 1;
+		}
+		return this.pageNo;
+	}
+
+	public int getPrePage() {
+		if (getHasPrePage()) {
+			return this.pageNo - 1;
+		}
+		return this.pageNo;
+	}
+
+	public long getTotalPages() {
+		if (this.totalCount < 0L) {
+			return -1L;
+		}
+		long count = this.totalCount / this.pageSize;
+		if (this.totalCount % this.pageSize > 0L) {
+			count += 1L;
+		}
+		return count;
+	}
+
+	public List<Integer> getPageNos() {
+		return getPageNos(getTotalPages(), this.pageNo);
+	}
+
+	public static List<Integer> getPageNos(long totalNo, int pageNo) {
+		List r = new ArrayList();
+
+		int startNo = 1;
+		int endNo = (int) totalNo;
+		if (pageNo < 5) {
+			startNo = 1;
+			endNo = (int) (totalNo > 5L ? 5L : totalNo);
+			for (int i = startNo; i <= endNo; i++) {
+				r.add(Integer.valueOf(i));
+			}
+			if (totalNo > 5L)
+				r.add(Integer.valueOf(0));
+		} else if (pageNo >= totalNo - 3L) {
+			startNo = pageNo - 3;
+			endNo = (int) totalNo;
+			r.add(Integer.valueOf(1));
+			if (startNo > 2) {
+				r.add(Integer.valueOf(2));
+				if (startNo != 3) {
+					r.add(Integer.valueOf(0));
+				}
+			}
+
+			for (int i = startNo; i <= endNo; i++)
+				r.add(Integer.valueOf(i));
+		} else {
+			r.add(Integer.valueOf(1));
+			startNo = pageNo - 3;
+			endNo = pageNo + 3;
+			if (startNo > 2) {
+				r.add(Integer.valueOf(0));
+			}
+			for (int i = startNo; i <= endNo; i++) {
+				r.add(Integer.valueOf(i));
+			}
+			if (endNo < totalNo) {
+				if (endNo < totalNo - 1L) {
+					r.add(Integer.valueOf(0));
+				}
+
+				r.add(Integer.valueOf((int) totalNo));
+			}
+		}
+
+		return r;
+	}
+}

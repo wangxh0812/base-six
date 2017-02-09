@@ -1,0 +1,5 @@
+package com.six.web;
+
+public class Swagger2Config {
+
+}

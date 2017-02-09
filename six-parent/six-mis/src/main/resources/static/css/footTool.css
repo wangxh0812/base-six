@@ -1,0 +1,11 @@
+.foot{
+	right:5px;
+	bottom:5px;
+	width:auto;
+	background:none repeat scroll 0 0 rgb(255,255,255);
+	text-align: center;
+}
+.foot div{
+	margin-top:10px;
+	font-size:12px;
+}

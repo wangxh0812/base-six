@@ -1,0 +1,75 @@
+package com.larva.framework.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.six.framework.security.VertifyCodeAuthenticationFilter;
+import com.six.framework.security.web.LoginSuccessHandler;
+import com.six.framework.security.web.WebAuthenticationProvider;
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true) // 允许进入页面方法前检验
+public class WebSpringSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
+	private WebAuthenticationProvider webProvider;// 自定义验证
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.addFilterBefore(new VertifyCodeAuthenticationFilter("/login", "/loginFail"),UsernamePasswordAuthenticationFilter.class)
+			.csrf().disable().authorizeRequests().anyRequest()
+			.authenticated()
+			.and().formLogin().loginPage("/login")
+			.successHandler(loginSuccessHandler())// 登录成功后可使用loginSuccessHandler()存储用户信息，可选。
+			.failureUrl("/loginFail")
+			.permitAll()
+			.and().logout().invalidateHttpSession(true).deleteCookies("JSESSIONID").logoutUrl("/logout").logoutSuccessUrl("/dologout").permitAll()
+			.and().sessionManagement().maximumSessions(1).expiredUrl("/expired");
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/", 
+				//"/logout",
+				"/**/index.html", 
+				"/**/login.html", 
+				"/**/css/**", 
+				"/**/images/**", 
+				"/**/js/**",
+				"/**/*.svl", 
+				"/**/*.ftl",
+				"/**/favicon.ico",
+				"/**/swagger-ui.html",
+				"/webjars/**",
+				"/swagger-resources/**",
+				"/v2/**"
+				);
+	}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		// 将验证过程交给自定义验证工具
+		auth.authenticationProvider(webProvider);
+	}
+
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+
+	@Bean
+	public LoginSuccessHandler loginSuccessHandler() {
+		return new LoginSuccessHandler("/dologin", true);
+	}
+
+}

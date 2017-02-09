@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <!--法定节假日-->
+  <holiday>
+     <!--2016年-->
+     <days name="元旦" value="2016-01-01"/>
+     <days name="春节" value="2016-02-08"/>
+     <days name="春节" value="2016-02-09"/>
+     <days name="春节" value="2016-02-10"/>
+     <days name="春节" value="2016-02-11"/>
+     <days name="春节" value="2016-02-12"/>
+     <days name="清明节" value="2016-04-04"/>
+     <days name="劳动节" value="2016-05-02"/>
+     <days name="端午节" value="2016-06-09"/>
+     <days name="端午节" value="2016-06-10"/>
+     <days name="中秋" value="2016-09-15"/>
+     <days name="中秋" value="2016-09-16"/>
+     <days name="国庆节" value="2016-10-03"/>
+     <days name="国庆节" value="2016-10-04"/>
+     <days name="国庆节" value="2016-10-05"/>
+     <days name="国庆节" value="2016-10-06"/>
+     <days name="国庆节" value="2016-10-07"/>
+     
+     
+     <!--2017年-->
+     <days name="元旦" value="2016-01-01"/>
+     <days name="春节" value="2016-02-08"/>
+     <days name="春节" value="2016-02-09"/>
+     <days name="春节" value="2016-02-10"/>
+     <days name="春节" value="2016-02-11"/>
+     <days name="春节" value="2016-02-12"/>
+     <days name="清明节" value="2016-04-04"/>
+     <days name="劳动节" value="2016-05-02"/>
+     <days name="端午节" value="2016-06-09"/>
+     <days name="端午节" value="2016-06-10"/>
+     <days name="中秋" value="2016-09-15"/>
+     <days name="中秋" value="2016-09-16"/>
+     <days name="国庆节" value="2016-10-03"/>
+     <days name="国庆节" value="2016-10-04"/>
+     <days name="国庆节" value="2016-10-05"/>
+     <days name="国庆节" value="2016-10-06"/>
+     <days name="国庆节" value="2016-10-07"/>
+     
+  </holiday>
+  <!--法定节假调休日-->
+  <workday>
+     <!--2016年-->
+     <days name="春节" value="2016-02-06"/>
+     <days name="春节" value="2016-02-14"/>
+     <days name="端午节" value="2016-06-12"/>
+     <days name="中秋" value="2016-09-18"/>
+     <days name="国庆节" value="2016-10-08"/>
+     <days name="国庆节" value="2016-10-09"/>
+  </workday>
+</root>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<script src="/static/p/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+	<h1>login success,home <span id="msg"></span></h1>
+	<h1>${resultMsg},${request.getContextPath()}</h1>
+	<br/><input type="button" value="logout" onclick="logout()"/>
+</body>
+<script type="text/javascript">
+var url =  "http://"+window.location.host+"/";
+
+function logout(){
+	$.ajax({
+		type: "POST",
+		url: url + "logout",
+		contentType:"application/x-www-form-urlencoded",
+		async: false,
+		success: function(result, textStatus){
+			if(result.success){
+				window.location.href='/index.html';
+			}else{
+				$("#msg").html(result.msg);
+			}
+		},
+		error: function(){
+			//请求出错处理
+		}
+	});
+}
+function get(){
+	$.ajax({
+		type: "POST",
+		url: url + "web/user/get.json",
+		contentType:"application/json",
+		success: function(result, textStatus){
+			if(result.success){
+				$("#msg").html(result.data.userName);
+			}else{
+				$("#msg").html(result.msg);
+			}
+		},
+		error: function(){
+			//请求出错处理
+		}
+	});
+}
+get();
+</script>
+</html>

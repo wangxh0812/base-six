@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<label name="c_status">
+		<item name="1" selected="1">有效</item>
+		<item name="2">失效</item>
+	</label>
+	<label name="c_isvalid">
+		<item name="0">失效</item>
+		<item name="1" selected="1">有效</item>
+	</label>
+	<label name="c_yn">
+		<item name="0" selected="0">否</item>
+		<item name="1">是</item>
+	</label>
+	<label name="c_user_notype" >
+		<item name="0">身份证</item>
+	<!--<item name="1">驾驶证</item> -->
+		<item name="2">护照</item>
+		<item name="3">军官证</item>
+		<item name="4">其他</item>
+	</label>
+	<label name="c_sex">
+		<item name="1" selected="1">先生</item>
+		<item name="2">女士</item>
+	</label>
+	<label name="c_customerType">
+		<item name="1" select="1">个人</item>
+		<item name="2" >公司</item>
+	</label>
+	<label name="c_image_type">
+		<item name="30">积分商品缩略图</item>
+		<item name="31">积分商品图</item>
+		<item name="32">积分商品介绍图</item>
+	</label>
+	
+	<label name="c_dealerUser_grade">
+		<item name="1" selected="1">销售</item>
+		<item name="2">主管</item>
+	</label>
+	
+	<label name="c_point_order_status">
+		<item name="1" selected="1">已兑换</item>
+		<item name="2">已发货</item>
+	</label>
+
+	<label name="c_image_product_type">
+		<item name="20">车型缩略图</item>
+		<item name="21">车型图</item>
+		<item name="22">车型介绍图</item>
+	</label>
+	<label name="c_goods_category">
+		<item name="1000">油卡</item>
+		<item name="1001">雨刮器</item>
+		<item name="1002">机油</item>
+	</label>
+	<label name="c_user_type">
+		<item name="1">个人</item>
+		<item name="2">公司</item>
+	</label>
+	<label name="c_invoice_type">
+		<item name="1">个人</item>
+		<item name="2">公司</item>
+	</label>
+		<label name="c_image_product_type">
+		<item name="20">车型缩略图</item>
+		<item name="21">车型图</item>
+		<item name="22">车型介绍图</item>
+	</label>
+	<label name="c_image_product_color">
+		<item name="勃朗白">勃朗白</item>
+		<item name="香槟金">香槟金</item>
+		<item name="宝石蓝">宝石蓝</item>
+		<item name="琥珀金">琥珀金</item>
+		<item name="极光银">极光银</item>
+		<item name="熔岩灰">熔岩灰</item>
+		<item name="曜石黑">曜石黑</item>
+		<item name="橄榄棕">橄榄棕</item>
+	</label>
+	
+	<label name="c_source_name_type">
+		<item name="线上引流">线上引流</item>
+		<item name="首次进店">首次进店</item>
+		<item name="基盘潜客">基盘潜客</item>
+	</label>
+	<label name="c_user_class_name_type">
+		<item name="个人">个人</item>
+		<item name="小微企业">小微企业</item>
+		<item name="中大型企业">中大型企业</item>
+		<item name="政党/国家机关/非盈利机构">政党/国家机关/非盈利机构</item>
+	</label>
+	<label name="c_dealer_level">
+		<item name="1">一级</item>
+		<item name="2">二级</item>
+	</label>
+</root>

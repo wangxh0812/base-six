@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;jdbc.properties&apos; to &apos;six-web/src/main/resources&apos;&#x0A;- Original project: &apos;six-mis&apos;&#x0A;- Destination element: &apos;six-web/src/main/resources&apos;&#x0A;- Original element: &apos;jdbc.properties&apos;" description="Copy file" destination="=six-web/src\/main\/resources" element1="src/main/resources/jdbc.properties" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1486348610255" units="0" version="1.0"/>
+</session>

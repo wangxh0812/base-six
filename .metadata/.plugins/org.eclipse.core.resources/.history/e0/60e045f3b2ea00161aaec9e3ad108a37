@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>后台管理系统</title>
+<!-- 设置页面的缩放比率 -->
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<link rel="icon" href="${request.getContextPath()}/images/favicon.ico" type="image/gif" sizes="16*16"/>
+<link rel="apple-touch-icon" href="${request.getContextPath()}/images/favicon.png" />
+<!-- 加载css和js文件 -->
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/css/login.css"/>
+<script type="text/javascript" src="${request.getContextPath()}/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/js/login.js"></script>
+<script type="text/javascript">
+	var StaticSetting = {};
+	StaticSetting.absUrl = "${request.getContextPath()}";
+</script>
+</head>
+<body id="login_bady">
+	<div id="login">
+		<div class="header">
+			<h1>后台管理系统</h1>
+		</div>
+		<div class="limg">
+			<img src="${request.getContextPath()}/images/login/login_left.png">
+		</div>
+		<div class="fenge"></div>
+		<div class="formbox">
+			<!-- <form action="${request.getContextPath()}/dologin" method="post" id="form1"> -->
+				<label class="lable"> <span class="title">用户名：</span> <span class="inputbox1"> <input type="text" name="account" class="input" /></span></label> 
+				<label class="lable"> <span class="title">密&nbsp;&nbsp;码：</span><span class="inputbox1"> <input type="password" name="password" class="input" /></span></label> 
+				<label class="lable"> <span class="title">验证码：</span> <span class="inputbox2"> <input type="text" class="input" name="validateCode" />
+				</span> <span class="inputbox21"><img id="kaptchaImg" width="90px"height="28px" /></span></label>
+				<div class="lable">
+					<span class="title">&nbsp;</span> <span class="inputbox3"> <input
+						type="submit" value="登录" id="submitButt" class="sub" /> <input
+						type="reset" value="重置" class="re" />
+					</span>
+				</div>
+				<div>
+					<span class="errormsgSpan"></span>
+				</div>
+			<!-- </form> -->
+		</div>
+	</div>
+</body>
+</html>

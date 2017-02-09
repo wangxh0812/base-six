@@ -1,0 +1,78 @@
+package com.larva.framework.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.six.framework.security.KaptchaAuthenticationFilter;
+import com.six.framework.security.LoginSuccessHandler;
+import com.six.framework.security.WebAuthenticationProvider;
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true) // 允许进入页面方法前检验
+public class WebSpringSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
+	private WebAuthenticationProvider webProvider;// 自定义验证
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		//http.addFilterBefore(new KaptchaAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		http
+		.addFilterAt(new KaptchaAuthenticationFilter(this.authenticationManagerBean()),UsernamePasswordAuthenticationFilter.class)
+			.csrf().disable()
+			.authorizeRequests().anyRequest().authenticated()
+			.and().formLogin().loginPage("/login")
+			.successHandler(loginSuccessHandler())
+			.defaultSuccessUrl("/dologin", true)
+			.permitAll()// 登录成功后可使用loginSuccessHandler()存储用户信息，可选。
+			.and().logout().logoutUrl("/logout")
+			//.and().sessionManagement().maximumSessions(1).expiredUrl("/expired")
+			//.and().exceptionHandling().accessDeniedPage("/accessDenied")
+			;
+		
+		
+		/* http.addFilterBefore(new KaptchaAuthenticationFilter("/login", "/login?error"), UsernamePasswordAuthenticationFilter.class)  
+         .csrf().disable()  
+         .authorizeRequests().anyRequest().authenticated()  
+         .and().formLogin().loginPage("/login").failureUrl("/login?error").usernameParameter("username").passwordParameter("password").permitAll()  
+         .and().logout().logoutUrl("/logout").permitAll();  */
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().
+			antMatchers("/",
+					"/**/index.html",
+					"/**/login.html",
+					"/**/css/**",
+					"/**/images/**",
+					"/**/js/**",
+					"/**/favicon.ico");
+	}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		// 将验证过程交给自定义验证工具
+		auth.authenticationProvider(webProvider);
+	}
+	
+	@Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+	@Bean
+	public LoginSuccessHandler loginSuccessHandler() {
+		return new LoginSuccessHandler();
+	}
+	
+}

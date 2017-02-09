@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="/p/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<!-- <form action="/login" method="post"> -->
+	<h1>login</h1>
+	<br/>Username:<input type="text" name="username"  id="username"/>
+	<br/>Password:<input type="password" name="password" id="password"/>
+	<br/>ValidateCode:<input type="text" name="vertifyCode" id="vertifyCode"/><img style="height:50px;width:8%;display:inline;" alt="验证码"  id="kaptcha" src="/static/kaptcha.svl" title="refresh" onclick="javascript:refreshKaptcha();"/>  
+	<br/><input type="button" value="login" onclick="login()"/>
+	<br/><span id="msg"></span>
+<!-- </form> -->
+</body>
+<script type="text/javascript">
+var url =  "http://"+window.location.host+"/";
+function refreshKaptcha() {  
+    $("#kaptcha").attr("src","/static/kaptcha.svl?t=" +  Math.random());
+}
+function login(){
+	var username = $("#username").val();
+	var password = $("#password").val();
+	var vertifyCode = $("#vertifyCode").val();
+	$.ajax({
+		type: "POST",
+		url: url + "login?t="+ Math.random(),
+		async: false,
+		data:"username="+username+"&password="+password+"&vertifyCode="+vertifyCode,
+		contentType:"application/x-www-form-urlencoded",
+		success: function(result, textStatus){
+			if(result.success){
+				//window.location.href='/static/p/pages/home.html';
+				window.location.href='/home';
+			}else{
+				$("#msg").html(result.msg);
+			}
+		},
+		error: function(){
+			//请求出错处理
+		}
+	});
+	refreshKaptcha();
+}
+</script>
+</html>
